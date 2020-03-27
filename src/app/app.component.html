@@ -1,0 +1,63 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-5 shadow">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">AstroBlog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li routerLinkActive="active" class="nav-item"  [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link" routerLink="/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link" routerLink="/recent">Recent</a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link" routerLink="/all">All</a>
+        </li>
+        <li routerLinkActive="active" class="nav-item dropdown">
+          <a data-toggle="dropdown" role="button" class="nav-link dropdown-toggle" aria-expanded="false">More...</a>
+          <div class="dropdown-menu">
+            <a *ngIf="loggedIn" routerLink="/add" class="dropdown-item">Add a Article</a>
+            <a *ngIf="loggedIn" routerLink="/remove" class="dropdown-item">Remove Article</a>
+            <div class="dropdown-divider"></div>
+            <a  data-toggle="modal" data-target="#exampleModalCenter" class="dropdown-item">Log In</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Modal A pop up box for blogger to enable admin rights (add or remove article) -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Welcome Blogger</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure that you are the blogger?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onLogIn()" data-dismiss="modal">Yes! I am the blogger.</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Page Content -->
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

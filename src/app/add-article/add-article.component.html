@@ -1,0 +1,41 @@
+<h2>Add Article</h2>
+<div class="p-5">
+    <form autocomplete="off">
+        <div class="form-group">
+            <label for="forTitle">Title</label>
+            <input  [(ngModel)]="titleInput" 
+                    class="form-control count" 
+                    id="forTitle" 
+                    type="text" 
+                    name="first" 
+                    minlength="10"
+                    placeholder="Title of minimum length 10 characters">
+        </div>
+        
+        <div class="form-group">
+            <label for="forAuthor">Author</label>
+            <input  class="form-control"
+                    id="forAuthor"
+                    type="text" 
+                    placeholder="Optional (if left empty anonymous will be displayed as author)">
+        </div>
+
+        <div class="form-group">
+            <label for="articleContent">Content</label>
+            <textarea   [(ngModel)]="contentInput" 
+                        class="form-control count" 
+                        id="articleContent" 
+                        type="text"
+                        name="second" 
+                        minlength="20" 
+                        rows="20"
+                        placeholder="Context of minimum length 20 characters">
+            </textarea>
+
+        </div>
+        <div class="btn-group float-right">
+            <button class="btn btn-outline-dark" [disabled]="!(titleInput.length >=10 && contentInput.length>=20)">Publish Article</button>
+            <button class="btn btn-outline-danger" routerLink="/"> Cancel</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  loggedIn:boolean = false;
+  title = 'bolg2';
+
+  onLogIn(){
+    this.loggedIn = true;
+  }
+}
