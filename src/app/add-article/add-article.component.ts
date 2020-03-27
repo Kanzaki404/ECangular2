@@ -11,36 +11,28 @@ export class AddArticleComponent implements OnInit {
   titleInput:string = '';
   contentInput:string = '';
 
-  article = {
-    title:'',
-    author:'',
-    content:'',
-    timeToRead: 0
-
-}
   constructor(private data:DataService) { }
 
   ngOnInit(): void {
   }
 
   onPublish(title:string,content:string,author:string){
-    ;
-    this.article.title = title;
-    this.article.content = content;
     if(author === ""){
-      this.article.author = "Anonymous"
-    }else{
-      this.article.author = author;
+      author = "Anonymous"
     }
-
-    this.article.timeToRead = this.timeToReadCalc(this.contentInput.length)
+    let article = {
+      title:title,
+      author:author,
+      content:content,
+      timeToRead: this.timeToReadCalc(this.contentInput)
+    }
     
-    this.data.createArticle(this.article)
+    this.data.createArticle(article)
   }
 
-  timeToReadCalc(input:number){
-    let words = this.contentInput.split(' ').length
-    if(input < 200){
+  timeToReadCalc(input:string){// get the input text and calculate the number of words with counting spaces and retrn rounded number of average reading speed 200 wpm
+    let words = input.split(' ').length
+    if(words < 200){
       return 1
     }else{
       return Math.round(words/200)

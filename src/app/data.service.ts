@@ -1,11 +1,4 @@
 export class DataService{
-    article = {
-        title:'',
-        author:'',
-        content:'',
-        timeToRead: 0
-
-    }
     articles:object[] = [{      
          title:'',
         author:'',
