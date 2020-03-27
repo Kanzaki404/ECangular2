@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./remove-article.component.css']
 })
 export class RemoveArticleComponent implements OnInit {
-
+  articles = ['bismark1','bismark2','bismark23','bismark4','bismark5']
   constructor() { }
 
   ngOnInit(): void {

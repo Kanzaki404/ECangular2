@@ -1,4 +1,5 @@
 <h2>Add Article</h2>
+<hr>
 <div class="p-5">
     <form autocomplete="off">
         <div class="form-group">
@@ -17,7 +18,8 @@
             <input  class="form-control"
                     id="forAuthor"
                     type="text" 
-                    placeholder="Optional (if left empty anonymous will be displayed as author)">
+                    placeholder="Optional (if left empty anonymous will be displayed as author)"
+                    #authorInput>
         </div>
 
         <div class="form-group">
@@ -34,7 +36,10 @@
 
         </div>
         <div class="btn-group float-right">
-            <button class="btn btn-outline-dark" [disabled]="!(titleInput.length >=10 && contentInput.length>=20)">Publish Article</button>
+            <button class="btn btn-outline-dark" 
+                    [disabled]="!(titleInput.length >=10 && contentInput.length>=20)"
+                    (click)="onPublish(titleInput,contentInput,authorInput.value)"
+                >Publish Article</button>
             <button class="btn btn-outline-danger" routerLink="/"> Cancel</button>
         </div>
     </form>
