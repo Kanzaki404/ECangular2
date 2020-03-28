@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-remove-article',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./remove-article.component.css']
 })
 export class RemoveArticleComponent implements OnInit {
-  articles = ['bismark1','bismark2','bismark23','bismark4','bismark5']
-  constructor() { }
+  articles:object[] = [];
+  constructor(private data:DataService) {}
 
   ngOnInit(): void {
   }
+
+  getArticles(){
+
+    if(this.articles.length === 0 && this.articles.length < this.data.getAllArticles().length ){
+      this.articles = this.data.getAllArticles()
+    }else{
+      alert('nothing to fetch')
+    }
+    
+  }
+
 
 }
