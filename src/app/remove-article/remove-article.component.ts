@@ -29,5 +29,6 @@ export class RemoveArticleComponent implements OnInit {
   del(item:string){
     let index = this.articles.findIndex(x => x.title ===item);
     this.articles.splice(index,1)
+    this.data.remove(this.articles)
   }
 }

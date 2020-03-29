@@ -31,10 +31,8 @@ export class DataService{
     }
 
     getAllArticles(){
-        while(this.articles.length > 0) {
-            this.articles.pop();
-          }
-          
+        this.clearArr()
+
         let num = parseInt(localStorage.getItem('last'));
         for(let i=0; i<num+1; i++){
             this.articles.push(JSON.parse(localStorage.getItem(i.toString())))
@@ -45,5 +43,25 @@ export class DataService{
     getLastArticle(){
         let key = localStorage.getItem('last')
         console.log(localStorage.getItem(key))
+    }
+    
+    remove(newArr:any){
+        this.clearArr();
+        this.articles = [...newArr];
+        localStorage.clear()
+        for(let i = 0; i<this.articles.length; i++){
+            let key:string = i.toString();
+            let art:string = JSON.stringify(this.articles[i]);
+            localStorage.setItem(key,art);
+            let toStr = this.articles.length -1;
+            localStorage.setItem('last', toStr.toString())
+        }
+    }
+
+    clearArr(){
+        while(this.articles.length > 0) {
+            this.articles.pop();
+          }
+
     }
 }
