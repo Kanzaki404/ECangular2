@@ -9,21 +9,22 @@ import { DataService } from '../data.service';
 export class RemoveArticleComponent implements OnInit {
   disable:boolean =false;
   articles:Array<any> = [];
+  emptyArr:boolean = false;
   constructor(private data:DataService) {}
 
   ngOnInit(): void {
   }
 
   getArticles(){
-
-    this.disable = true;
-    let returned:object [] = [...this.data.getAllArticles()];
-    console.log(returned)
-    for(let i = 0; i<returned.length;i++){
-      this.articles[i] = returned[i];
+      this.disable = true;
+      let returned:object [] = [...this.data.getAllArticles()];
+      if(returned.length === 0){
+        this.emptyArr = true;
+      }else{
+        for(let i = 0; i<returned.length;i++){
+        this.articles[i] = returned[i];
+      } 
     }
-    
-    console.log(this.articles)
   }
 
   del(item:string){

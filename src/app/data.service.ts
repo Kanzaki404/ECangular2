@@ -41,14 +41,14 @@ export class DataService{
     }
 
     getLastArticle(){
-        let key = localStorage.getItem('last')
-        console.log(localStorage.getItem(key))
+        let latest = localStorage.getItem('last')
+        return localStorage.getItem(latest)
     }
     
     remove(newArr:any){
         this.clearArr();
         this.articles = [...newArr];
-        localStorage.clear()
+        localStorage.clear()  //clear the storage and add the new articles except the on removed. This is done to keep the key of local storage in order
         for(let i = 0; i<this.articles.length; i++){
             let key:string = i.toString();
             let art:string = JSON.stringify(this.articles[i]);
