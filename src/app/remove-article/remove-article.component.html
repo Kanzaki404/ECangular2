@@ -1,11 +1,11 @@
 <h2>Remove Article</h2>
-<button class="btn btn-dark" (click)=getArticles()>Fetch</button> 
+<button class="btn btn-dark" [disabled]="disable" (click)=getArticles()>Fetch</button> 
 <hr>
 <div class="list p-2" *ngFor="let article of articles">
    <div class="card">
         <div class="card-body" style="text-align: center;">
             {{article.title}}
         </div>
-        <button class="btn btn-danger btn-block">Remove Article</button>
+        <button class="btn btn-danger btn-block" (click)="del(article.title)">Remove Article</button>
       </div>
 </div>

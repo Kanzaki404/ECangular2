@@ -31,8 +31,12 @@ export class DataService{
     }
 
     getAllArticles(){
+        while(this.articles.length > 0) {
+            this.articles.pop();
+          }
+          
         let num = parseInt(localStorage.getItem('last'));
-        for(let i=0; i<num; i++){
+        for(let i=0; i<num+1; i++){
             this.articles.push(JSON.parse(localStorage.getItem(i.toString())))
         }
         return this.articles
