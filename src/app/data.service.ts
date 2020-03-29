@@ -44,6 +44,20 @@ export class DataService{
         let latest = localStorage.getItem('last')
         return localStorage.getItem(latest)
     }
+
+    getLastFive(){
+        console.log('getLastFive called')
+        this.clearArr();
+        let lastIndex = parseInt(localStorage.getItem('last'))
+        this.getAllArticles();
+        if(lastIndex >= 5){
+            let take = lastIndex -5;
+            this.articles.splice(0,take+1)
+            console.log(this.articles)
+        }else if(lastIndex <= 4){
+            console.log(this.articles)
+        }
+    }
     
     remove(newArr:any){
         this.clearArr();

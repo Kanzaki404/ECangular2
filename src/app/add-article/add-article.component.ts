@@ -28,6 +28,9 @@ export class AddArticleComponent implements OnInit {
     }
     
     this.data.createArticle(article)
+    this.titleInput= '';  //cleared in order to stop the browser from crying 'cannot read propery length of null'
+    this.contentInput = '';
+    alert('Article successfully published')
   }
 
   timeToReadCalc(input:string){// get the input text and calculate the number of words with counting spaces and retrn rounded number of average reading speed 200 wpm
