@@ -1,1 +1,13 @@
-<p>all works!</p>
+<div class="p-4">
+    <div *ngFor="let article of articles">
+        
+        <div class="card" style="border: none ; padding-bottom: 40px;">
+            <div class="card-body" style="text-align: left; border: none;">
+                <h1 (click)="onClick(article.id)">{{article.title}}</h1>
+                <p class="lead">Aprox time to read: {{article.timeToRead}}min</p>
+                <p class="lead author">Article by: {{article.author}}</p>
+                <hr>
+            </div>
+          </div>
+    </div>
+</div>

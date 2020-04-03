@@ -13,17 +13,18 @@ export class DataService{
     //     }
     // }
     key:number = 0;
-    createArticle(article:object){
+    createArticle(article:any){
         
         
         if(localStorage.getItem('last') === null){
-
+            article.id = this.key
             localStorage.setItem(this.key.toString(),JSON.stringify(article))
             localStorage.setItem('last', this.key.toString())
 
         }else{
             this.key = parseInt(localStorage.getItem('last')); 
             this.key++
+            article.id = this.key
             localStorage.setItem(this.key.toString(),JSON.stringify(article))  
             localStorage.setItem('last', this.key.toString())
         }
@@ -41,8 +42,11 @@ export class DataService{
     }
 
     getLastArticle(){
+        console.log('getLastArticle fired')
         let latest = localStorage.getItem('last')
-        return localStorage.getItem(latest)
+        const data = JSON.parse(localStorage.getItem(latest))
+        console.log(data)
+        return data
     }
 
     getLastFive(){
@@ -53,12 +57,18 @@ export class DataService{
         if(lastIndex >= 5){
             let take = lastIndex -5;
             this.articles.splice(0,take+1)
-            console.log(this.articles)
+            return this.articles
         }else if(lastIndex <= 4){
-            console.log(this.articles)
+            return this.articles
         }
     }
     
+    getArticle(id:string){
+        const data = JSON.parse(localStorage.getItem(id))
+        return data
+    }
+
+
     remove(newArr:any){
         this.clearArr();
         this.articles = [...newArr];
@@ -72,6 +82,7 @@ export class DataService{
         }
     }
 
+    
     clearArr(){
         while(this.articles.length > 0) {
             this.articles.pop();
