@@ -10,6 +10,9 @@ import { RecentComponent } from './recent/recent.component';
 import { AllComponent } from './all/all.component';
 import { FormsModule }   from '@angular/forms';
 import { Routes,RouterModule } from '@angular/router';
+import { CurrentComponent } from './recent/current/current.component';
+import { CurrentAllComponent } from './all/current-all/current-all.component';
+
 
 const appRoutes:Routes = [
   {path: '', component: HomeComponent },
@@ -17,6 +20,9 @@ const appRoutes:Routes = [
   {path: 'all', component: AllComponent },
   {path: 'add', component: AddArticleComponent },
   {path: 'remove', component: RemoveArticleComponent },
+  {path: 'recent/:id', component: CurrentComponent },
+  {path: 'all/:id', component: CurrentAllComponent }
+  
 
 
 ]
@@ -28,7 +34,10 @@ const appRoutes:Routes = [
     RemoveArticleComponent,
     HomeComponent,
     RecentComponent,
-    AllComponent
+    AllComponent,
+    CurrentComponent,
+    CurrentAllComponent,
+  
   ],
   imports: [
     BrowserModule,

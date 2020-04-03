@@ -7,12 +7,11 @@ import { DataService } from '../data.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  article:any;
 
   constructor(private data:DataService) { }
 
   ngOnInit(): void {
-    this.data.getLastArticle()
-
+    this.article = this.data.getLastArticle();
   }
-
 }

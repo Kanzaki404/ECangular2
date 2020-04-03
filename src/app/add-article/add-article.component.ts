@@ -10,7 +10,7 @@ export class AddArticleComponent implements OnInit {
 
   titleInput:string = '';
   contentInput:string = '';
-
+  author:string = '';
   constructor(private data:DataService) { }
 
   ngOnInit(): void {
@@ -24,12 +24,14 @@ export class AddArticleComponent implements OnInit {
       title:title,
       author:author,
       content:content,
-      timeToRead: this.timeToReadCalc(this.contentInput)
+      timeToRead: this.timeToReadCalc(this.contentInput),
+      id:'0'
     }
     
     this.data.createArticle(article)
     this.titleInput= '';  //cleared in order to stop the browser from crying 'cannot read propery length of null'
     this.contentInput = '';
+    this.author = '';
     alert('Article successfully published')
   }
 
