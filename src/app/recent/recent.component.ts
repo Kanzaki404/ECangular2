@@ -26,9 +26,6 @@ export class RecentComponent implements OnInit {
     if(id !== undefined){
       this.router.navigate(['/recent',id])
     }
-    
-  }
 
-
-  
+  }  
 }

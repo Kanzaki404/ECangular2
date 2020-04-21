@@ -6,17 +6,6 @@ export class DataService {
     author: "none",
     content: "no articles are published"
   }];
-  // createArticle(article:object){
-  //     console.log(this.articles.length)
-  //     this.articles.push(article)
-  //     for(let i = 0; i<this.articles.length; i++){
-  //         let key:string = i.toString();
-  //         let art:string = JSON.stringify(this.articles[i]);
-  //         localStorage.setItem(key,art);
-  //         let toStr = this.articles.length -1;
-  //         localStorage.setItem('last', toStr.toString())
-  //     }
-  // }
   key: number = 0;
   createArticle(article: any) {
     if (localStorage.getItem("last") === null) {
@@ -60,6 +49,7 @@ export class DataService {
     }
   }
 
+
   getLastFive() {
     console.log("getLastFive called");
     this.clearArr();
@@ -74,8 +64,30 @@ export class DataService {
       } else if (lastIndex <= 4) {
         return this.articles;
       }
+
+    }
+ }
+    
+    getArticle(id:string){
+        const data = JSON.parse(localStorage.getItem(id))
+        return data
+    }
+
+
+    remove(newArr:any){
+        this.clearArr();
+        this.articles = [...newArr];
+        localStorage.clear()  //clear the storage and add the new articles except the on removed. This is done to keep the key of local storage in order
+        for(let i = 0; i<this.articles.length; i++){
+            let key:string = i.toString();
+            let art:string = JSON.stringify(this.articles[i]);
+            localStorage.setItem(key,art);
+            let toStr = this.articles.length -1;
+            localStorage.setItem('last', toStr.toString())
+        }
     }
   }
+
 
   getArticle(id: string) {
     const data = JSON.parse(localStorage.getItem(id));
@@ -94,6 +106,7 @@ export class DataService {
       localStorage.setItem("last", toStr.toString());
     }
   }
+
 
   clearArr() {
     while (this.articles.length > 0) {

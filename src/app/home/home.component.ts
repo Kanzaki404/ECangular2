@@ -8,7 +8,7 @@ import { DataService } from '../data.service';
 })
 export class HomeComponent implements OnInit {
   article:any;
-  empty:boolean;
+
   constructor(private data:DataService) { }
 
   ngOnInit(): void {
