@@ -1,0 +1,13 @@
+.font-weight-light{
+    padding-bottom: 20px;
+}
+
+.author{
+    padding-bottom: 20px;
+    color: #2A3439;
+    font-style: italic;
+}
+
+.content{
+    white-space: pre-wrap;
+}

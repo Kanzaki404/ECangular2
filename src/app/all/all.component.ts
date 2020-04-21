@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all.component.css']
 })
 export class AllComponent implements OnInit {
-
-  constructor() { }
+  articles:object []= []
+  constructor(private data:DataService, private router: Router) { }
 
   ngOnInit(): void {
+    this.articles = this.data.getAllArticles()
   }
 
+  onClick(id:string){
+    this.router.navigate(['/all',id])
+  }
 }
