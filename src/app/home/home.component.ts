@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private data:DataService) { }
 
   ngOnInit(): void {
-    this.article = this.data.getLastArticle();
+
+      this.article = this.data.getLastArticle();
   }
 }

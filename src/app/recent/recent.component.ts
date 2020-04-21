@@ -23,9 +23,9 @@ export class RecentComponent implements OnInit {
   }
 
   onClick(id:string){
-    this.router.navigate(['/recent',id])
-  }
+    if(id !== undefined){
+      this.router.navigate(['/recent',id])
+    }
 
-
-  
+  }  
 }

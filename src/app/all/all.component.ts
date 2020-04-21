@@ -13,7 +13,6 @@ export class AllComponent implements OnInit {
 
   ngOnInit(): void {
     this.articles = this.data.getAllArticles()
-  
   }
 
   onClick(id:string){

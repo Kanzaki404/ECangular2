@@ -1,4 +1,5 @@
 <div class="p-4">
+    <h2 *ngIf="this.articles.length === 0">No articles Added</h2>
     <div *ngFor="let article of articles">
         
         <div class="card" style="border: none ; padding-bottom: 40px;">
